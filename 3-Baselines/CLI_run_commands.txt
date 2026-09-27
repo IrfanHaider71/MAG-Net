@@ -1,0 +1,65 @@
+
+This folder contains the shared baseline harness and all six baseline
+models used for comparison in the manuscript. Every baseline is trained
+and evaluated on the same canonical split, with matched search budgets
+and identical evaluation metrics, so the benchmark is not confounded by
+tuning effort.
+
+▶ Run command to train the classical ensemble baselines
+python classical_baselines.py
+
+▶ Run command to train the initial representation baseline
+python baseline_smiles_cnn.py
+
+▶ Run command to perform the matched representation baseline search
+python optimize_smiles_cnn.py
+
+▶ Run command to perform the Transformer baseline search
+python optimize_transformer_smiles.py
+
+▶ Run command to perform the fair matched ungated ablation tuning
+python fair_tune_descriptor_mlp.py
+
+▶ Run command to perform the fingerprint baseline search
+python optimize_morgan_fp.py
+
+✅ Notes for users:
+- baseline_harness.py is imported by the scripts below and is NOT run
+  directly. It provides the shared data loading, canonical train/test
+  split, mask-aware target standardization, masked-MSE training loop,
+  and evaluation/CSV schema so all baselines follow the same protocol.
+
+- Before running any script, place the required input CSVs in the
+  01_data directory located one level above this folder:
+      compound_structures.csv
+      structural_indices.csv
+      target_properties.csv
+      held_out_split.csv
+
+- classical_baselines.py trains Random Forest and Gradient Boosting,
+  one independently-tuned model per property, via RandomizedSearchCV
+  (40 iterations, 5-fold CV, seed = 42).
+
+- baseline_smiles_cnn.py trains the initial fixed-configuration
+  character-level SMILES-CNN baseline.
+
+- optimize_smiles_cnn.py gives the SMILES-CNN baseline the same
+  matched 25-config search budget that the other models received
+  (SEARCH_EPOCHS = 200, SEARCH_PATIENCE = 25, FINAL_EPOCHS = 500,
+  FINAL_PATIENCE = 60).
+
+- optimize_transformer_smiles.py performs the matched 25-config search
+  for the Transformer encoder baseline. (d_model, num_heads) pairs are
+  restricted to valid combinations by construction.
+
+- fair_tune_descriptor_mlp.py gives the ungated Descriptor-MLP ablation
+  an independent 25-config search that mirrors the MAG-Net joint search
+  exactly (same search space, same 5-fold CV, same canonical split),
+  removing the "tuned vs untuned" confound from the gated-vs-ungated
+  comparison.
+
+- optimize_morgan_fp.py performs the matched 25-config search for the
+  Morgan-fingerprint MLP baseline.
+
+- All scripts use seed = 42 for reproducibility. All output CSVs are
+  written to the current working directory.
