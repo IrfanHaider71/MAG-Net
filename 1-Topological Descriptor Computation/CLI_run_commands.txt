@@ -1,0 +1,35 @@
+
+This folder contains the closed-form, degree-based descriptor computation used throughout the manuscript. Each compound
+canonical SMILES string is parsed into a heavy-atom graph, the
+M-polynomial edge partition {m_ij} is built, and all nine descriptors
+(M1, M2, mM2, ReM3, H, F, AZ, ISI, SDD) are computed in closed form.
+
+▶ Run command to compute the descriptors from SMILES
+python topological_descriptors_computation.py
+
+▶ Run command to display the closed-form descriptor definitions
+python topological_formulas.py
+
+▶ Run command to reproduce the descriptor–property correlation matrix
+python compute_descriptor_property_correlations.py
+
+✅ Notes for users:
+- Before running any script, place the required input CSVs in the
+  working directory:
+      compound_structures.csv        (identifier + structural representation)
+      target_properties.csv          (identifier + target property values)
+
+- topological_descriptors_computation.py reads the compound structures
+  and writes structural_indices.csv containing the nine descriptors per
+  compound, using the heavy-atom graph construction described in
+  Section 3.2 / Algorithm 1 of the manuscript.
+
+- topological_formulas.py is purely informational. It prints the LaTeX
+  forms of the descriptors (both the operator form on the
+  M-polynomial and the direct edge-sum form). No file is written.
+
+- compute_descriptor_property_correlations.py merges the descriptor
+  table with the target property table and recomputes the Pearson
+  correlation matrix between the descriptors and the target
+  properties. 
+- All output CSVs are written to the current working directory.
