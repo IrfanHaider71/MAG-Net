@@ -202,16 +202,9 @@ Each script includes parameters and instructions to reproduce the reported resul
 ## Citation
 
 Please read `USAGE_NOTICE.txt` for legal terms.
-Once the paper is published, cite it as:
-
+Once the paper is published,:
+Citation (upon publication)
 ```
-@article{Haider2026,
-  title   = {MAG-Net: An interpretable gated multi-task network for provably bounded graph-based property analysis},
-  author = {Irfan Haider, Mingchu Li and ....},
-  journal = {Pattern Analysis and Applications},
-  year    = {2026},
-  doi     = {will be provided after acceptance}
-}
 ```
 
 ---
