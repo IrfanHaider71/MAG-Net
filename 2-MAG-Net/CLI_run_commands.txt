@@ -1,0 +1,71 @@
+
+
+This folder contains the full MAG-Net training, tuning, and evaluation
+pipeline, together with the robustness analyses and the figure-generation
+scripts that reproduce the manuscript's reported results.
+
+▶ Run command for the full validated pipeline
+python proposed_validated_pipeline.py
+
+▶ Run command for the joint hyperparameter search
+python magnet_joint_tuning.py
+
+▶ Run command for the per-property 5-fold CV summary
+python magnet_tuned_kfold_summary.py
+
+▶ Run command to extract the learned gating matrix and per-object errors
+python extract_gating_and_errors.py
+
+▶ Run command for the repeated-split evaluation
+python repeated_split_eval_neural.py
+
+▶ Run command for the multi-seed stability and input-perturbation checks
+python c5_b4_combined.py
+
+▶ Run command to regenerate the learned gating heatmap
+python generate_attribution_heatmap.py
+
+▶ Run command to regenerate the parity plots
+python generate_parity_merged.py
+
+▶ Run command to regenerate the split-violin distributions
+python generate_violin_composite.py
+
+▶ Run command to regenerate the radar comparison
+python regenerate_radar_v2.py
+
+✅ Notes for users:
+- Before running any script, place the required input CSVs in the
+  01_data directory located one level above this folder:
+      compound_structures.csv
+      structural_indices.csv
+      target_properties.csv
+      held_out_split.csv
+
+- proposed_validated_pipeline.py runs the full validated pipeline:
+  5-fold cross-validation, Y-scrambling, PCA applicability-domain
+  analysis, final model training, and held-out test evaluation.
+
+- magnet_joint_tuning.py performs the joint hyperparameter search
+  over 25 randomly sampled configurations under 5-fold CV, preserving
+  the shared multi-task architecture.
+
+- magnet_tuned_kfold_summary.py re-runs 5-fold CV for the adopted
+  final configuration.
+
+- extract_gating_and_errors.py retrains the adopted configuration and
+  extracts the property-specific gating matrix W_g and the per-object
+  percentage errors on the held-out test set.
+
+- repeated_split_eval_neural.py retrains MAG-Net and the ungated
+  ablation across independent random train/test splits.
+
+- c5_b4_combined.py assesses multi-seed training stability and
+  input-perturbation robustness. A fidelity check compares the
+  seed=42 rerun against the published metrics before the perturbation
+  results are produced.
+
+- The four generate_*.py / regenerate_*.py scripts read the CSVs
+  produced by the scripts above and reproduce the paper figures.
+
+
