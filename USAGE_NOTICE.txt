@@ -1,0 +1,44 @@
+USAGE NOTICE
+============
+
+This repository accompanies the manuscript:
+
+ MAG-Net: An interpretable gated multi-task network for provably
+         bounded graph-based property analysis
+
+    Authors:  Irfan Haider, et al.
+    Journal:  Pattern Analysis and Applications
+    Year:     2026
+
+------------------------------------------------------------
+TERMS OF USE
+------------------------------------------------------------
+
+The source code in this repository is provided SOLELY for transparency
+and peer review.
+
+NO REUSE, REDISTRIBUTION, OR DERIVATIVE WORK is permitted without
+prior written permission from the first author.
+
+------------------------------------------------------------
+CITATION
+------------------------------------------------------------
+
+Once the paper is published, please cite it as:
+
+@article{Haider2026,
+  title   = {MAG-Net: An interpretable gated multi-task network for provably
+            bounded graph-based property analysis},
+  author  = {Irfan Haider, et al.},
+  journal = {Pattern Analysis and Applications},
+  year    = {2026},
+  doi     = {will be provided after acceptance}
+}
+
+------------------------------------------------------------
+CONTACT
+------------------------------------------------------------
+
+Please reach out for any queries or permission requests.
+
+    Irfan Haider: irfanhaider@mail.dlut.edu.cn
