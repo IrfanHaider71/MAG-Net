@@ -1,0 +1,12 @@
+Following dataset is used for this study. Which were further processed as
+described in submitted article.
+
+============================================================================
+
+The compound benchmark used in this study was curated from publicly
+available databases, which are clearly cited in the manuscript.
+Structural representations and target property values were further
+processed into graph-derived descriptors as described in the submitted
+article. The source code, along with the necessary scripts, configurations, and
+instructions required to reproduce the experiments and results, is
+openly available at: https://github.com/IrfanHaider71/MAG-Net-Dataset-and-Code
